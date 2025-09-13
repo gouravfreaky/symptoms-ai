@@ -32,11 +32,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, isDarkMode, onThe
   const signInDivRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof google === 'undefined' || !signInDivRef.current) {
-      console.error("Google Identity Services script not loaded.");
-      return;
-    }
-
     const handleCredentialResponse = (response: any) => {
       const decoded = decodeJwt(response.credential);
       if (decoded) {
@@ -54,23 +49,38 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess, isDarkMode, onThe
       }
     };
 
-    try {
-      google.accounts.id.initialize({
-        client_id: GOOGLE_CLIENT_ID,
-        callback: handleCredentialResponse,
-        use_fedcm_for_prompt: false, // FIX: Disable FedCM to prevent errors in sandboxed environments like AI Studio
-      });
+    const initializeAndRenderButton = () => {
+      if (!signInDivRef.current) return;
+      try {
+        google.accounts.id.initialize({
+          client_id: GOOGLE_CLIENT_ID,
+          callback: handleCredentialResponse,
+          use_fedcm_for_prompt: false,
+        });
 
-      google.accounts.id.renderButton(
-        signInDivRef.current!,
-        { theme: "outline", size: "large", type: "standard", text: "signin_with" }
-      );
-      
-      google.accounts.id.prompt(); // Also display the One Tap prompt
-    } catch (error) {
-        console.error("Error initializing Google Sign-In:", error);
-    }
+        google.accounts.id.renderButton(
+          signInDivRef.current,
+          { theme: "outline", size: "large", type: "standard", text: "signin_with" }
+        );
+        
+        google.accounts.id.prompt();
+      } catch (error) {
+          console.error("Error initializing Google Sign-In:", error);
+      }
+    };
+    
+    // Use an interval to check for the 'google' object from the async script.
+    // This prevents a race condition on initial page load.
+    const intervalId = setInterval(() => {
+      if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
+        clearInterval(intervalId);
+        initializeAndRenderButton();
+      }
+    }, 100);
 
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [onLoginSuccess]);
 
   return (
