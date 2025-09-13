@@ -10,8 +10,7 @@ https://symptoms-ai-diagnosis.vercel.app/
 
 ## Application Flow
 
-(public/flowchart.png)
-
+<img src="public/flowchart.png" alt="App Flow" width="500"/>
 ---
 
 ## Core Features
