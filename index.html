@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-ar" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <title>Symptom to Diagnosis AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      :root {
+        --background-primary: #f8fafc; /* slate-50 */
+        --background-secondary: #ffffff; /* white */
+        --text-primary: #1e293b;       /* slate-800 */
+        --text-secondary: #64748b;    /* slate-500 */
+        --border-primary: #e2e8f0;     /* slate-200 */
+        --accent-primary: #2563eb;     /* blue-600 */
+        --accent-primary-hover: #1d4ed8; /* blue-700 */
+      }
+      html.dark {
+        --background-primary: #0f172a; /* slate-900 */
+        --background-secondary: #1e293b; /* slate-800 */
+        --text-primary: #f1f5f9;       /* slate-100 */
+        --text-secondary: #94a3b8;    /* slate-400 */
+        --border-primary: #334155;     /* slate-700 */
+        --accent-primary: #3b82f6;     /* blue-500 */
+        --accent-primary-hover: #2563eb; /* blue-600 */
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      @media print {
+        /* Hide elements that are not part of the report */
+        .no-print {
+          display: none !important;
+        }
+
+        /* Reset body and layout for printing */
+        body {
+          background-color: #fff !important;
+          padding: 0;
+          margin: 0;
+        }
+        main.container, .printable-area {
+          max-width: 100% !important;
+          width: 100% !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          box-shadow: none !important;
+        }
+
+        /* Style the content cards for the report */
+        .printable-content {
+          box-shadow: none !important;
+          border: 1px solid #e5e7eb !important;
+          border-radius: 0 !important;
+          padding: 1rem !important;
+          margin-bottom: 1rem;
+          break-inside: avoid;
+        }
+
+        /* Show the print-only header */
+        .print-only {
+          display: block !important;
+        }
+
+        /* Ensure text is black and background is white for readability */
+        h1, h2, h3, h4, h5, h6, p, div, span, li {
+           color: #000 !important;
+           background-color: transparent !important;
+        }
+        a {
+           text-decoration: none !important;
+           color: #000 !important;
+        }
+        a[href]:after {
+           content: " (" attr(href) ")";
+           font-size: 0.8rem;
+           color: #555 !important;
+        }
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'background-primary': 'var(--background-primary)',
+              'background-secondary': 'var(--background-secondary)',
+              'text-primary': 'var(--text-primary)',
+              'text-secondary': 'var(--text-secondary)',
+              'border-primary': 'var(--border-primary)',
+              'accent-primary': 'var(--accent-primary)',
+              'accent-primary-hover': 'var(--accent-primary-hover)',
+            }
+          }
+        }
+      }
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://aistudiocdn.com/react@^19.1.1",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+          "react/": "https://aistudiocdn.com/react@^19.1.1/",
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.19.0"
+        }
+      }
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background-primary">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
