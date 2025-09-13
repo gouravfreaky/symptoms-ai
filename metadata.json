@@ -1,6 +1,6 @@
 {
   "name": "Symptom to Diagnosis AI",
-  "description": "A modern React app where users input symptoms, and an AI, powered by Gemini, generates a differential diagnosis, suggests relevant tests, and provides explanations for both patients and healthcare professionals.",
+  "description": "A modern React app where users input symptoms, and an AI, generates a differential diagnosis, suggests relevant tests, and provides explanations for both patients and healthcare professionals.",
   "requestFramePermissions": [
     "microphone"
   ]

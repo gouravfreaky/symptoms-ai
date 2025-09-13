@@ -75,6 +75,84 @@ To run this project locally, you will need to configure two things:
 
 ---
 
+## Local Development Setup
+
+Follow these steps to get the application running on your local machine.
+
+### Prerequisites
+
+-   [Node.js](https://nodejs.org/) (version 18 or higher recommended)
+-   [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### 1. Clone the Repository
+
+First, clone the project repository from GitHub:
+
+```bash
+git clone https://github.com/your-username/symptom-ai-assistant.git
+cd symptom-ai-assistant
+```
+
+### 2. Install Dependencies
+
+Install the necessary Node.js packages:
+
+```bash
+npm install
+```
+*(Or `yarn install` if you use Yarn)*
+
+### 3. Configure API Keys
+
+The application requires API keys for Google Sign-In and Fireworks AI.
+
+#### A. Google Client ID
+
+You need a Google Client ID to enable user authentication.
+
+1.  Go to the [Google Cloud Console](https://console.cloud.google.com/apis/credentials).
+2.  Create a new project or select an existing one.
+3.  Navigate to **APIs & Services > Credentials**.
+4.  Click **+ CREATE CREDENTIALS** and select **OAuth client ID**.
+5.  Choose **Web application** as the application type.
+6.  Under **Authorized JavaScript origins**, add your local development URL (e.g., `http://localhost:5173`).
+7.  Click **Create**. You will be given a **Client ID**.
+8.  In the project root, open the file `config.ts` and replace the placeholder with your Client ID:
+
+    ```typescript
+    // config.ts
+    export const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID_HERE';
+    ```
+
+#### B. Fireworks AI API Key
+
+The AI functionalities are powered by Fireworks AI.
+
+1.  Sign up for an account at [Fireworks AI](https://fireworks.ai/).
+2.  Navigate to your API Keys section and generate a new key.
+3.  Open the following two files and replace the placeholder API key with your own:
+    -   `services/fireworksService.ts`
+    -   `components/ChatComponent.tsx`
+
+    ```typescript
+    // In both files, find this line and replace the key:
+    const FIREWORKS_API_KEY = 'YOUR_FIREWORKS_AI_API_KEY_HERE';
+    ```
+
+    > **Note for Production:** For a real-world application, it is strongly recommended to move API keys to a secure `.env` file and access them via environment variables, rather than hardcoding them in the source code.
+
+### 4. Run the Application
+
+Start the local development server:
+
+```bash
+npm run dev
+```
+
+The application should now be running and accessible at `http://localhost:5173` (or another port if specified in your setup). You should see the Google login page.
+
+---
+
 ## 🚨 Disclaimer
 
 This tool is for informational purposes only and is **not a substitute for professional medical advice, diagnosis, or treatment**. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
