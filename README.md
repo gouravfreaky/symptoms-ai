@@ -10,19 +10,7 @@ https://symptoms-ai-diagnosis.vercel.app/
 
 ## Application Flow
 
-The user journey is designed to be seamless, secure, and intuitive from start to finish.
-
-1.  **Secure Authentication**: The application is protected by Google Sign-In. Users must first log in with their Google account, ensuring that their analysis history and data remain private and tied to their identity.
-2.  **Symptom Input**: On the main screen, the user is presented with a clean interface to describe their symptoms. They can provide rich context, including a timeline, current medications, and lifestyle factors, for a more personalized analysis. A voice-to-text option is available for accessibility and ease of use.
-3.  **AI Analysis**: Upon clicking "Analyze," the application securely sends the anonymized symptom data to the Fireworks AI API. A loading indicator keeps the user informed while the AI processes the information.
-4.  **View Comprehensive Report**: The AI returns a detailed report, which is displayed in a structured and easy-to-digest format. This includes:
-    *   A high-level **Severity Assessment**.
-    *   A **Differential Diagnosis** with confidence scores visualized in a bar chart.
-    *   An interactive **Symptom Pathways** map to visualize connections.
-    *   Suggestions for **Tests** and **Specialists**.
-    *   Separate **AI Reasoning** sections for patients and professionals.
-5.  **Interact & Clarify**: Users can hover over elements in the report to see visual highlights connecting symptoms to conditions. For deeper understanding, they can use the integrated **Chat** to ask follow-up questions about their results in real-time.
-6.  **Manage & Export**: The user can save any analysis to their private history, load previous results, or generate a clean, **Print-Friendly Report** to share with a healthcare provider.
+(public/flowchart.png)
 
 ---
 

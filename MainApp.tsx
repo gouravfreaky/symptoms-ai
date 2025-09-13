@@ -120,17 +120,17 @@ const MainApp: React.FC<MainAppProps> = ({ user, onLogout, isDarkMode, onThemeTo
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="relative">
-                        <GlobeIcon className="h-5 w-5 absolute top-1/2 left-2 -translate-y-1/2 text-text-secondary" />
                         <select
                             value={language}
                             onChange={(e) => setLanguage(e.target.value)}
-                            className="pl-8 pr-4 py-2 text-sm rounded-full text-text-secondary bg-slate-200 dark:bg-slate-700 appearance-none focus:outline-none focus:ring-2 focus:ring-accent-primary"
+                            className="pl-9 pr-4 py-2 text-sm rounded-full text-text-secondary bg-slate-200 dark:bg-slate-700 appearance-none focus:outline-none focus:ring-2 focus:ring-accent-primary"
                             aria-label="Select language"
                         >
                             {Object.entries(languages).map(([code, name]) => (
                                 <option key={code} value={code}>{name}</option>
                             ))}
                         </select>
+                        <GlobeIcon className="h-5 w-5 absolute top-1/2 left-3 -translate-y-1/2 text-text-secondary pointer-events-none" />
                     </div>
                     <button
                         onClick={onThemeToggle}
